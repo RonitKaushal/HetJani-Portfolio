@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Het Jani Portfolio — Game Developer</title>
+<meta name="description" content="Het Jani Portfolio — Game Developer working with Unity & C#. A 3D car game, a 2D pixel adventure and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Patrick+Hand&family=Pixelify+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="is-loading">
+
+<!-- ========== LOADER ========== -->
+<div class="loader" aria-hidden="true">
+  <div class="loader-inner">
+    <span class="px loader-knight" data-sprite="knight"></span>
+    <p class="loader-name">het jani</p>
+    <div class="loader-bar"><span></span></div>
+    <p class="loader-status">LOADING LEVEL <span id="loader-count">0</span>%</p>
+  </div>
+</div>
+
+<!-- cursor -->
+<div class="cursor" aria-hidden="true"><span class="cursor-label"></span></div>
+<div class="cursor-dot" aria-hidden="true"></div>
+
+<div class="paper-grain" aria-hidden="true"></div>
+<div class="progress" aria-hidden="true"><span></span></div>
+
+<header class="topbar">
+  <a href="#hero" class="logo" data-cursor="start"><span class="px logo-heart" data-sprite="heart"></span><span>het<span class="dot">.</span>jani</span></a>
+  <nav class="nav">
+    <a href="#about" data-magnetic>about</a>
+    <a href="#experience" data-magnetic>work</a>
+    <a href="#games" data-magnetic>games</a>
+    <a href="#skills" data-magnetic>skills</a>
+    <a href="#contact" class="nav-cta" data-magnetic>say hi!</a>
+  </nav>
+  <button class="menu-btn" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+</header>
+
+<div class="menu-overlay" aria-hidden="true">
+  <a href="#about"><small>01</small>about</a>
+  <a href="#experience"><small>02</small>work</a>
+  <a href="#games"><small>03</small>games</a>
+  <a href="#skills"><small>04</small>skills</a>
+  <a href="#contact"><small>05</small>say hi!</a>
+</div>
+
+<main>
+
+  <!-- ========== HERO: 3D desk ========== -->
+  <section id="hero" class="hero">
+    <div class="scene">
+      <!-- back -->
+      <svg class="layer doodle d-cube draw" data-depth="-60" data-speed="0.2" data-rot="8" viewBox="0 0 100 100" aria-hidden="true">
+        <path d="M50 10 L86 28 L86 68 L50 88 L14 68 L14 28 Z M14 28 L50 46 L86 28 M50 46 L50 88"/>
+      </svg>
+      <svg class="layer doodle d-gizmo draw" data-depth="40" data-speed="0.45" data-rot="0" viewBox="0 0 120 120" aria-hidden="true">
+        <path class="gx" d="M60 62 L108 76 M98 68 L108 76 L96 80"/>
+        <path class="gy" d="M60 62 L60 12 M52 22 L60 12 L68 22"/>
+        <path class="gz" d="M60 62 L20 88 M22 77 L20 88 L31 88"/>
+      </svg>
+      <svg class="layer doodle d-jump draw" data-depth="90" data-speed="0.6" data-rot="0" viewBox="0 0 260 120" aria-hidden="true">
+        <path d="M10 110 C 60 -20, 170 -20, 230 104" stroke-dasharray="2 9"/>
+        <path d="M218 96 L231 106 L234 90"/>
+      </svg>
+      <svg class="layer doodle d-pad draw" data-depth="110" data-speed="0.7" data-rot="-6" viewBox="0 0 140 90" aria-hidden="true">
+        <path d="M30 20 L110 20 C 130 20, 138 40, 134 60 C 130 80, 112 84, 100 70 L90 60 L50 60 L40 70 C 28 84, 10 80, 6 60 C 2 40, 10 20, 30 20 Z"/>
+        <path d="M34 34 L34 50 M26 42 L42 42"/><circle cx="100" cy="36" r="4"/><circle cx="112" cy="46" r="4"/>
+      </svg>
+
+      <!-- center -->
+      <div class="layer hero-copy" data-depth="60" data-speed="0.25" data-rot="0">
+        <p class="kicker px-font">PLAYER 1 — READY</p>
+        <h1 class="name" aria-label="Het Jani"><span class="split">Het</span> <span class="split">Jani</span></h1>
+        <p class="portfolio-word px-font">PORTFOLIO</p>
+        <p class="role">a <mark class="hl">Game Developer</mark> building <span class="circled">Unity<svg class="circle-svg draw" viewBox="0 0 120 60" preserveAspectRatio="none" aria-hidden="true"><path d="M18 34 C 10 14, 60 4, 100 12 C 122 18, 116 46, 74 52 C 40 57, 8 48, 14 30 C 18 20, 40 10, 66 9"/></svg></span> &amp; C# games</p>
+        <div class="hero-actions">
+          <a href="#games" class="sketch-btn primary" data-magnetic>▶ play my games</a>
+          <a href="resume.html" class="sketch-btn" data-magnetic>resume</a>
+        </div>
+      </div>
+
+      <!-- pixel sprites -->
+      <span class="layer px s-knight" data-sprite="knight" data-depth="150" data-speed="1" data-rot="0" aria-hidden="true"></span>
+      <span class="layer px s-slime" data-sprite="slime" data-depth="120" data-speed="0.85" data-rot="0" aria-hidden="true"></span>
+      <span class="layer px s-coin c1" data-sprite="coin" data-depth="200" data-speed="1.3" data-rot="0" aria-hidden="true"></span>
+      <span class="layer px s-coin c2" data-sprite="coin" data-depth="80" data-speed="0.6" data-rot="0" aria-hidden="true"></span>
+      <span class="layer px s-coin c3" data-sprite="coin" data-depth="170" data-speed="1.15" data-rot="0" aria-hidden="true"></span>
+      <span class="layer px s-sword" data-sprite="sword" data-depth="210" data-speed="1.4" data-rot="-30" aria-hidden="true"></span>
+      <span class="layer px s-potion" data-sprite="potion" data-depth="130" data-speed="0.9" data-rot="10" aria-hidden="true"></span>
+      <div class="layer hp-row" data-depth="140" data-speed="1" data-rot="-3" aria-hidden="true">
+        <span class="px" data-sprite="heart"></span><span class="px" data-sprite="heart"></span><span class="px" data-sprite="heart"></span>
+      </div>
+
+      <!-- front, draggable -->
+      <figure class="layer photo drag p-car" data-depth="170" data-speed="1.15" data-rot="-6" data-cursor="drag">
+        <span class="tape"></span>
+        <img src="assets/car-race-1.jpg" alt="3D car game screenshot" draggable="false">
+        <figcaption>3D car game</figcaption>
+      </figure>
+      <figure class="layer photo drag p-rpg" data-depth="130" data-speed="0.95" data-rot="5" data-cursor="drag">
+        <span class="tape"></span>
+        <img src="assets/rpg-goblin.jpg" alt="2D pixel game screenshot" draggable="false">
+        <figcaption>2D pixel adventure</figcaption>
+      </figure>
+      <div class="layer sticky yellow drag devlog" data-depth="190" data-speed="1.25" data-rot="4" data-cursor="drag">
+        <span class="tape"></span>
+        <strong>dev log</strong>
+        <ul class="checks">
+          <li class="done">car physics</li>
+          <li class="done">follow camera</li>
+          <li>next boss fight</li>
+        </ul>
+      </div>
+      <div class="layer keys" data-depth="160" data-speed="1.05" data-rot="0" aria-hidden="true">
+        <kbd data-key="w">W</kbd>
+        <div><kbd data-key="a">A</kbd><kbd data-key="s">S</kbd><kbd data-key="d">D</kbd></div>
+        <p>try me</p>
+      </div>
+    </div>
+
+    <p class="drag-hint">drag things around ✎</p>
+    <a href="#intro" class="scroll-hint px-font" aria-label="Scroll down"><span class="blink">PRESS START</span><svg viewBox="0 0 20 40" aria-hidden="true"><path d="M10 2 C 6 14, 14 22, 10 36 M3 28 L10 37 L17 28"/></svg></a>
+  </section>
+
+  <!-- ========== ZOOM REVEAL ========== -->
+  <section id="intro" class="zoom" aria-label="Game developer">
+    <div class="zoom-sticky">
+      <img class="zoom-img" src="assets/car-track.jpg" alt="" aria-hidden="true">
+      <svg class="zoom-mask" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <mask id="hj-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1600" height="900">
+            <rect width="1600" height="900" fill="#fff"/>
+            <g id="hj-group"></g>
+          </mask>
+        </defs>
+        <rect class="zoom-paper" width="1600" height="900" mask="url(#hj-mask)"/>
+      </svg>
+      <p class="zoom-hint">keep scrolling to enter the game ↓</p>
+      <div class="zoom-copy">
+        <p class="px-font">LEVEL 00 · THE DEVELOPER</p>
+        <h2>I build games<br>people want to <em>play.</em></h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MARQUEE ========== -->
+  <div class="tape-band" aria-hidden="true">
+    <div class="tape-track">
+      <span>Unity 2D &amp; 3D ✦ C# ✦ Gameplay Programming ✦ Physics ✦ Cinemachine ✦ Level Design ✦ Prototyping ✦ Pixel Art ✦&nbsp;</span>
+      <span>Unity 2D &amp; 3D ✦ C# ✦ Gameplay Programming ✦ Physics ✦ Cinemachine ✦ Level Design ✦ Prototyping ✦ Pixel Art ✦&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- ========== ABOUT ========== -->
+  <section id="about" class="section about">
+    <span class="big-num" data-speed="-0.15">01</span>
+    <h2 class="title reveal"><small class="px-font">LVL 01</small>about me</h2>
+
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="reveal">I'm a <mark class="hl">Game Developer</mark> with about a year of experience at <a href="https://arcticbase.tech" target="_blank" rel="noopener" class="pen-link" data-cursor="open">Arcticbase.tech</a>, building 2D and 3D games in <b>Unity</b> with <b>C#</b>.</p>
+        <p class="reveal">I love the parts you can feel: <u class="wavy">player controls</u>, physics, game mechanics, cameras, UI and a lot of debugging until it feels just right.</p>
+        <p class="reveal">So far that's a 3D racing game and a 2D pixel adventure, with plenty more <mark class="hl pink">levels to unlock</mark>.</p>
+      </div>
+
+      <div class="player-card tilt reveal">
+        <span class="tape"></span>
+        <div class="pc-head">
+          <span class="px pc-avatar" data-sprite="knight"></span>
+          <div>
+            <h3>Het Jani</h3>
+            <p class="px-font">GAME DEVELOPER</p>
+          </div>
+        </div>
+        <dl>
+          <dt>base</dt><dd>Ahmedabad, India</dd>
+          <dt>engine</dt><dd>Unity 2D &amp; 3D</dd>
+          <dt>language</dt><dd>C#</dd>
+          <dt>loves</dt><dd>physics &amp; game feel</dd>
+        </dl>
+        <div class="xp"><span class="px-font">XP</span><div class="xp-bar"><i></i></div></div>
+        <span class="glare"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== EXPERIENCE ========== -->
+  <section id="experience" class="section">
+    <span class="big-num" data-speed="-0.15">02</span>
+    <h2 class="title reveal"><small class="px-font">LVL 02</small>experience</h2>
+
+    <div class="timeline">
+      <svg class="timeline-line" preserveAspectRatio="none" viewBox="0 0 20 1000" aria-hidden="true">
+        <path d="M10 0 C 4 120, 16 240, 10 360 S 4 600, 10 720 S 16 900, 10 1000"/>
+      </svg>
+      <article class="job main reveal">
+        <span class="duration">1 year</span>
+        <p class="badge px-font">● NOW PLAYING</p>
+        <h3>Game Developer <span class="dash">—</span> <a href="https://arcticbase.tech" target="_blank" rel="noopener" data-cursor="open">Arcticbase.tech</a></h3>
+        <p class="tags">Unity · C# · Rigidbody · Input System · Cinemachine · Prefabs</p>
+        <p>Built 2D and 3D game prototypes in Unity, developing player movement, physics, collisions and UI, and debugging gameplay from concept to a playable build.</p>
+      </article>
+      <article class="job reveal">
+        <span class="duration">6 months</span>
+        <h3>Web Developer <span class="dash">—</span> Way to Web</h3>
+        <p class="tags">React · Node.js · JavaScript</p>
+      </article>
+      <article class="job reveal">
+        <span class="duration">6 months</span>
+        <h3>Web Developer Intern <span class="dash">—</span> Patel Websolutions</h3>
+        <p class="tags">HTML · CSS · PHP</p>
+      </article>
+      <article class="job reveal">
+        <span class="duration">1 year</span>
+        <h3>Trainer <span class="dash">—</span> IANT</h3>
+        <p class="tags">Training · Mentoring · Communication</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ========== GAMES: cinematic scenes ========== -->
+  <section id="games" class="games-head section">
+    <span class="big-num" data-speed="-0.15">03</span>
+    <h2 class="title reveal"><small class="px-font">LVL 03</small>games I've made</h2>
+    <p class="lead reveal">Scroll to step inside each one.</p>
+  </section>
+
+  <section class="cine" aria-label="3D Car Game">
+    <div class="cine-sticky">
+      <div class="cine-frame"><img class="cine-img" src="assets/car-race-1.jpg" alt="3D car game: blue car racing rivals"></div>
+      <figure class="cine-float f1" data-z="1.4"><span class="tape"></span><img src="assets/car-race-2.jpg" alt="Chasing rival cars"></figure>
+      <span class="px cine-sprite" data-sprite="car" aria-hidden="true"></span>
+      <div class="cine-copy">
+        <p class="px-font">GAME 01 · 3D</p>
+        <h3>3D Car Game</h3>
+        <p>Car game prototype with acceleration, braking, steering and Rigidbody vehicle physics, plus a follow camera, collision detection, track setup and a racing HUD.</p>
+        <p class="tags">Unity · C# · Rigidbody · 3D Physics</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cine alt" aria-label="2D Game Project">
+    <div class="cine-sticky">
+      <div class="cine-frame"><img class="cine-img" src="assets/rpg-island.jpg" alt="2D pixel game: knight on an island"></div>
+      <figure class="cine-float f1" data-z="1.3"><span class="tape"></span><img src="assets/rpg-goblin.jpg" alt="Knight meets a goblin"></figure>
+      <span class="px cine-sprite" data-sprite="slime" aria-hidden="true"></span>
+      <div class="cine-copy">
+        <p class="px-font">GAME 02 · 2D</p>
+        <h3>2D Pixel Adventure</h3>
+        <p>Top-down 2D game with Rigidbody2D movement, collisions, triggers and interactions, designed levels, enemies, animations, an HP HUD and game-state management.</p>
+        <p class="tags">Unity · C# · Rigidbody2D · Animation</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section more">
+    <div class="more-grid">
+      <article class="card tilt reveal">
+        <span class="tape"></span>
+        <p class="px-font kind">BUILD 03 · WEB 3D</p>
+        <svg class="card-doodle draw" viewBox="0 0 200 120" aria-hidden="true">
+          <path d="M100 14 L140 34 L140 76 L100 96 L60 76 L60 34 Z M60 34 L100 54 L140 34 M100 54 L100 96"/>
+          <path d="M30 36 C 18 56, 24 80, 46 92 M40 94 L46 92 L44 84"/>
+          <path d="M170 36 C 182 56, 176 80, 154 92"/>
+        </svg>
+        <h3>WASL 3D Viewer</h3>
+        <p>Interactive viewer for five GLB models with drag-to-rotate, zoom, pan, wireframe mode and auto-rotate.</p>
+        <a href="https://unboxing-wasl.vercel.app" target="_blank" rel="noopener" class="sketch-btn small" data-cursor="open">try it live ↗</a>
+        <span class="glare"></span>
+      </article>
+      <article class="card blank reveal">
+        <span class="px lock" data-sprite="chest" aria-hidden="true"></span>
+        <p class="px-font kind">BUILD 04 · LOCKED</p>
+        <h3>next game loading…</h3>
+        <a href="#contact" class="sketch-btn small" data-magnetic>build it with me →</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- ========== SKILLS ========== -->
+  <section id="skills" class="section">
+    <span class="big-num" data-speed="-0.15">04</span>
+    <h2 class="title reveal"><small class="px-font">LVL 04</small>skill tree</h2>
+
+    <div class="skills-grid">
+      <div class="checklist reveal">
+        <h3><mark class="hl">gameplay</mark></h3>
+        <ul>
+          <li>Unity 2D &amp; 3D</li>
+          <li>C# &amp; OOP</li>
+          <li>Player controllers</li>
+          <li>Physics &amp; colliders</li>
+          <li>Input System</li>
+        </ul>
+      </div>
+      <div class="checklist reveal">
+        <h3><mark class="hl pink">game feel</mark></h3>
+        <ul>
+          <li>Cinemachine cameras</li>
+          <li>Animation &amp; prefabs</li>
+          <li>Game UI &amp; HUD</li>
+          <li>Level design</li>
+          <li>Prototyping &amp; debugging</li>
+        </ul>
+      </div>
+      <div class="sticker-box reveal">
+        <h3><mark class="hl green">toolbox</mark> <small>(drag them!)</small></h3>
+        <div class="stickers">
+          <span class="sticker" data-cursor="drag" style="--rot:-6deg">Unity Editor</span>
+          <span class="sticker" data-cursor="drag" style="--rot:4deg">Visual Studio</span>
+          <span class="sticker" data-cursor="drag" style="--rot:-3deg">VS Code</span>
+          <span class="sticker" data-cursor="drag" style="--rot:7deg">Git</span>
+          <span class="sticker" data-cursor="drag" style="--rot:-8deg">GitHub</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="edu-card tilt reveal">
+      <span class="px trophy" data-sprite="trophy" aria-hidden="true"></span>
+      <div>
+        <p class="px-font">ACHIEVEMENT UNLOCKED · EDUCATION</p>
+        <h3>Bachelor's Degree in Information Technology</h3>
+        <p class="edu-sub">Institute of Advanced Research · Gujarat, India</p>
+      </div>
+      <span class="glare"></span>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section id="contact" class="section contact">
+    <span class="big-num" data-speed="-0.15">05</span>
+    <h2 class="mega reveal">
+      <span>let's make</span>
+      <span><mark class="hl">something fun</mark></span>
+      <span>together!</span>
+    </h2>
+
+    <div class="contact-grid">
+      <div class="contact-left">
+        <form class="msg-form tilt reveal" id="msg-form">
+          <label>hey Het, my name is
+            <input type="text" name="name" required placeholder="player 2">
+          </label>
+          <label>and I wanted to say...
+            <textarea name="message" rows="3" required placeholder="let's build a game together!"></textarea>
+          </label>
+          <button type="submit" class="sketch-btn primary" data-magnetic>send ✈</button>
+        </form>
+        <ul class="contact-list reveal">
+          <li><span>email</span><a href="mailto:hetjani818@gmail.com" data-cursor="mail">hetjani818@gmail.com</a></li>
+          <li><span>phone</span><a href="tel:+919016743347" data-cursor="call">+91 90167 43347</a></li>
+          <li><span>linkedin</span><a href="https://www.linkedin.com/in/het-jani-888992262" target="_blank" rel="noopener" data-cursor="open">in/het-jani-888992262</a></li>
+          <li><span>based in</span>Ahmedabad, Gujarat</li>
+        </ul>
+      </div>
+
+      <div class="arcade reveal">
+        <div class="arcade-head">
+          <span>knight run</span>
+          <span class="px-font">SCORE <b id="score">0</b> · BEST <b id="best">0</b></span>
+        </div>
+        <canvas id="game" aria-label="Mini game: press space or tap to jump" data-cursor="jump"></canvas>
+        <p class="arcade-hint">space / tap to jump over the slimes</p>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>© <span id="year"></span> Het Jani · handmade with HTML, CSS &amp; JS</p>
+      <a href="#hero" class="back-top" data-magnetic>restart level ↑</a>
+    </footer>
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

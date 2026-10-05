@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Het Jani - Resume</title>
+<style>
+@font-face { font-family: "Ubuntu"; font-weight: 500; font-display: block; src: url("fonts/ubuntu-500.woff2") format("woff2"); }
+@font-face { font-family: "Ubuntu"; font-weight: 700; font-display: block; src: url("fonts/ubuntu-700.woff2") format("woff2"); }
+@font-face { font-family: "Ubuntu Mono"; font-weight: 400; font-display: block; src: url("fonts/ubuntu-mono-400.ttf") format("truetype"); }
+
+@page { size: A4; margin: 0; }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+body {
+  background: #e6e6e6;
+  font-family: "Ubuntu Mono", monospace;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Toolbar (screen only) */
+.toolbar {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; justify-content: center; gap: 10px;
+  padding: 12px;
+  background: rgba(40, 40, 42, .92);
+  backdrop-filter: blur(6px);
+}
+.toolbar button {
+  font: 700 13px "Ubuntu", sans-serif;
+  padding: 9px 18px;
+  border: 0; border-radius: 6px;
+  cursor: pointer;
+  background: #fff; color: #333132;
+}
+.toolbar button.primary { background: #4f8cff; color: #fff; }
+.toolbar button:disabled { opacity: .6; cursor: progress; }
+
+.pages { display: flex; flex-direction: column; align-items: center; gap: 24px; padding: 24px 0 48px; }
+
+/* A4 page. The source PDF is 612.24pt wide; the sheet is laid out in those
+   units and scaled so its width is exactly 210mm. */
+.page {
+  position: relative;
+  width: 210mm; height: 297mm;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, .18);
+}
+.sheet {
+  position: absolute; top: 0; left: 0;
+  width: 612.24pt; height: 865.86pt;
+  transform: scale(0.972292);
+  transform-origin: 0 0;
+}
+.sheet > *, .sheet article > *, .sheet ul > * { position: absolute; white-space: nowrap; }
+.sheet article, .sheet ul { position: static; list-style: none; }
+.sheet a { color: inherit; text-decoration: none; }
+
+.rule { background: #d6d6d6; }
+.rule.v { left: 390.59pt; top: 0; width: .75pt; height: 100%; }
+.rule.h { left: 0; width: 390.96pt; height: .75pt; }
+.rule.h.side { left: 390.96pt; width: 221.28pt; }
+
+.icons { left: 0; top: 0; width: 612.24pt; height: 865.86pt; fill: #333132; pointer-events: none; }
+
+/* Text styles: heading, subheading, body, and semi-bold skill items.
+   .name is the heading style at display size. */
+.name { font: 700 51pt/1 "Ubuntu"; color: #333132; letter-spacing: -.06pt; }
+.h    { font: 700 14pt/1 "Ubuntu"; color: #333132; letter-spacing: 1.2pt; }
+.sub  { font: 700 10pt/13pt "Ubuntu"; color: #333132; letter-spacing: .3pt; }
+.body { font: 400 9.5pt/12.8pt "Ubuntu Mono"; color: #4d4e50; }
+.skill { font: 500 9.5pt/12.8pt "Ubuntu"; color: #333132; letter-spacing: .2pt; }
+
+@media print {
+  body { background: #fff; }
+  .toolbar { display: none; }
+  .pages { display: block; padding: 0; }
+  .page { box-shadow: none; break-after: page; page-break-after: always; }
+  .page:last-child { break-after: auto; page-break-after: auto; }
+}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <button class="primary" id="btn-print" type="button">Export as PDF</button>
+  <button id="btn-download" type="button">Download PDF (image)</button>
+</div>
+
+<main class="pages">
+<section class="page" aria-label="Resume">
+<div class="sheet">
+<div class="rule v"></div>
+<div class="rule h" style="top:144.12pt"></div>
+<div class="rule h" style="top:538.52pt"></div>
+<div class="rule h side" style="top:205.07pt"></div>
+<div class="rule h side" style="top:386.72pt"></div>
+<div class="rule h side" style="top:706.22pt"></div>
+<!-- Header -->
+<h1 class="name" style="left:28.97pt;top:40.41pt">Het Jani</h1>
+<p class="sub" style="left:30.63pt;top:101.28pt">GAME DEVELOPER | UNITY &amp; C#</p>
+
+<!-- Experience -->
+<img class="icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD8AAAA3CAYAAAC7DJKyAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAEuklEQVR4nO2aW4hVVRjHT5qWlQhaqA9RSJk3UhpfxuGcvS7bOUwy1ssUCYmSvfTQRXqIEB0RFYl6CCK6qRFqKV4QgtDEB0vykhfGSymlpiUFUYqX8v7/ztn7zLfPzJ6z9z7rzDqje8GfYfZee+3vt9f3fet2Mpm0mC2NjY2DhNCvSSG3SqE6oEPe3zg6JITaCS0VQoywzRSpELh01Ncw/qYpKaGO4AM8ZputYoGhK0yCM3XgAzxgmy+0KKWmcIOFI8/h71647u4kwrOnyzzgTduMoUU6+gNm7D9SyonVtKe1HoYQ+rGzTbkPl+8yZK7ZAuPWMUN3GGlT6iXsg56A699rol3jBW65pmSoo7aZaBPuv4C1+YuJNkML4vYRKdVy9NyncQTwT/D3V9ZLZ+O2US6Af4x2DrA2z+P6ygS2rUAI6orwra2t9xUNr0nGtqew/IM4ejDDEol05LvWjTWrHzgvzUU6Xd1RsymzluClbKoDg40Jbv+Wz9bW1tYffA2d8IgJTEef9/9vaGgYgIf22zbahDDXuOi67ijWsU8g/N8uwaPSJiSXzdw14PrLbBtuSN8EuKSei4S+lsHLL1HpAp8+IhRerAPDq5fU84Odqr5HR2/gFz4vVpRPl+BpyBPqknXjq4aX030m5LXhuHYN8KsDMV+o6Kj1ZV9pvXXjq9PJ5ubm+1m8v1q8Lld2gaeFSDabfYhVfq4OAJILa41AZwr1HV0n3q49Tzcc9QJzk2G49q91iKRiszrK+MJR//cID20KZke11jpEMp3gk5lClvc7uAf4y8j6jzLXz9cBSHw5crHP0N7e3g/562AUeHKXV/x7lDDw4O/WYeLpBjpwMuvAiWC4Hg1eqG/LXH95HQDF0VHA381cfj6/Xwn+Ui439XH/vhCuWwdAkQWedt92zOUHyuJucGR4ipk3WAP9kSl/tg0VUVcxSo1mLu9083EqwavPAq6ffJl7nLaeyRWjyqv/E/RfgvcFlq9oa158eCGPBeMm3jKXxlSaM9CeG60S44rcFVPsp9DWmTjv5ctXL191GaojwCvK+nm/jrfM7YhsiKN2ZQwUGP9eDPjLfPlKc3l0wt/J4LHgCRoSzJq9AY9FyDsx3vkVf5Y2aUK8IxL8n01NTYP9ei0tLffAG56BQXOE0C+FS81BvWllELMKm480bIapcJ9tNBSeE5MB8XKE983I5/NDy965JTl8seI8Ez2Idr6I2IMHTLxPO1ryiU0ieOgK9QbFfDXGxDjD21MtODylDe380UOHRoYvxTBcaybccBI0piflcu5Y2gzhBmGoXFgYwhx1OEze/VX8OVpiI3GNq/ROaAJC4Fm0sbESS3z4Tt3wloZXKigwRaaJUpQhjg+vVBC3iyq9y7PnWlSGauAjytBZHVZnpm2rOXxhfJVyfDXgNNJQDuhz8J7+ohj2zvHin69RLqiBXb0FX5dK4VP4FD6Ft25UCp/Cp/ApfApfS/jib9vsG9V7YufzUqr37RvUi3L0RyV47eipYftdt6Pg9q+X4AtHuH3vMDJhr6vD2Wx2ZGDjwHXdIYiF7daNqy34Ka31k5nuCh0teWdbe4o/Ipa/9X2pk/TDBCHUh7lc88Pdgt+J5RbdaWZhT4dp4wAAAABJRU5ErkJggg==" alt="" style="left:31.20pt;top:171.52pt;width:15.12pt;height:13.20pt">
+<h2 class="h" style="left:90.60pt;top:171.92pt">EXPERIENCE</h2>
+<article>
+<div class="body" style="left:28.97pt;top:204.59pt">1 Year</div>
+<h3 class="sub" style="left:90.60pt;top:203.91pt">GAME DEVELOPER - <a href="https://arcticbase.tech" target="_blank" rel="noopener">ARCTICBASE.TECH</a></h3>
+<p class="body" style="left:90.60pt;top:217.59pt">Unity · C# · Rigidbody · Input System · Cinemachine · Prefabs</p>
+<p class="body" style="left:90.60pt;top:236.09pt">Built 2D and 3D game prototypes in Unity, developing player<br>movement, physics, collisions and UI, and debugging gameplay<br>from concept to a playable build.</p>
+</article>
+<article>
+<div class="body" style="left:28.97pt;top:283.69pt">6 Months</div>
+<h3 class="sub" style="left:90.60pt;top:283.01pt">WEB DEVELOPER INTERN - PATEL WEBSOLUTIONS</h3>
+<p class="body" style="left:90.60pt;top:296.69pt">HTML · CSS · PHP</p>
+<p class="body" style="left:90.60pt;top:315.19pt">Completed a six-month internship building and maintaining<br>websites, creating front-end layouts with HTML and CSS and<br>server-side features with PHP.</p>
+</article>
+<article>
+<div class="body" style="left:28.97pt;top:362.79pt">6 Months</div>
+<h3 class="sub" style="left:90.60pt;top:362.11pt">WEB DEVELOPER - WAY TO WEB</h3>
+<p class="body" style="left:90.60pt;top:375.79pt">React · Node.js · JavaScript</p>
+<p class="body" style="left:90.60pt;top:394.29pt">Worked for six months on full-stack web application<br>development, building interactive interfaces with React and<br>server-side logic with Node.js and JavaScript.</p>
+</article>
+<article>
+<div class="body" style="left:28.97pt;top:441.89pt">1 Year</div>
+<h3 class="sub" style="left:90.60pt;top:441.21pt">TRAINER - IANT</h3>
+<p class="body" style="left:90.60pt;top:454.89pt">Training · Mentoring · Communication</p>
+<p class="body" style="left:90.60pt;top:473.39pt">Trained students for one year at the Institute of Advance<br>Network Technology, delivering practical sessions and<br>guiding learners through hands-on technical exercises.</p>
+</article>
+
+<!-- Selected projects -->
+<img class="icon" src="data:image/png;base64,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" alt="" style="left:33.05pt;top:564.62pt;width:11.75pt;height:15.70pt">
+<h2 class="h" style="left:90.60pt;top:566.32pt">SELECTED PROJECTS</h2>
+<article>
+<div class="body" style="left:28.97pt;top:598.99pt">3D Game</div>
+<h3 class="sub" style="left:90.60pt;top:598.31pt">3D CAR GAME</h3>
+<p class="body" style="left:90.60pt;top:611.99pt">Unity · C# · Rigidbody · 3D Physics</p>
+<p class="body" style="left:90.60pt;top:630.49pt">Car game prototype with acceleration, braking, steering and<br>Rigidbody vehicle physics, plus a follow camera, collision<br>detection, track setup and basic UI.</p>
+</article>
+<article>
+<div class="body" style="left:28.97pt;top:678.09pt">2D Game</div>
+<h3 class="sub" style="left:90.60pt;top:677.41pt">2D GAME PROJECT</h3>
+<p class="body" style="left:90.60pt;top:691.09pt">Unity · C# · Rigidbody2D · Animation</p>
+<p class="body" style="left:90.60pt;top:709.59pt">2D game featuring Rigidbody2D player movement, collisions,<br>triggers and interactions, with designed levels, basic<br>animations, UI and game-state management, plus playtesting.</p>
+</article>
+<article>
+<div class="body" style="left:28.97pt;top:757.19pt">Web 3D</div>
+<h3 class="sub" style="left:90.60pt;top:756.51pt">WASL GIFT SET - 3D VIEWER</h3>
+<div class="body" style="right:232.24pt;top:757.19pt;text-align:right"><a href="https://unboxing-wasl.vercel.app" target="_blank" rel="noopener">unboxing-wasl.vercel.app</a></div>
+<p class="body" style="left:90.60pt;top:770.19pt">Web 3D · GLB Models · Vercel</p>
+<p class="body" style="left:90.60pt;top:788.69pt">Interactive web viewer showcasing five GLB product models<br>for the WASL gift set, with drag-to-rotate, zoom, pan,<br>wireframe mode, auto-rotate and reset controls.</p>
+</article>
+
+<!-- Profile -->
+<h2 class="h" style="left:412.84pt;top:43.27pt">PROFILE</h2>
+<p class="body" style="left:412.84pt;top:75.94pt">Game Developer with approximately 1<br>year of experience at Arcticbase.tech,<br>building 2D and 3D prototypes using<br>Unity and C#. Hands-on experience with<br>player controls, physics, gameplay<br>mechanics, UI systems and debugging,<br>including a 3D car game and a 2D game<br>project.</p>
+
+<!-- Contacts -->
+<h2 class="h" style="left:412.84pt;top:232.87pt">CONTACTS</h2>
+<svg class="icons" viewBox="0 8.35 612.24 865.86" aria-hidden="true"><path d="M423.06 284.01C423.07 284.16 423.03 284.28 422.93 284.38L421.71 285.59C421.66 285.65 421.59 285.70 421.50 285.74C421.41 285.79 421.33 285.81 421.24 285.83C421.23 285.83 421.21 285.83 421.18 285.83C421.15 285.83 421.11 285.84 421.07 285.84C420.95 285.84 420.76 285.82 420.51 285.78C420.25 285.74 419.93 285.64 419.55 285.48C419.18 285.33 418.76 285.10 418.28 284.78C417.81 284.47 417.30 284.04 416.77 283.50C416.34 283.08 415.99 282.68 415.71 282.29C415.43 281.91 415.20 281.55 415.03 281.23C414.86 280.90 414.73 280.60 414.65 280.34C414.56 280.07 414.51 279.85 414.47 279.65C414.44 279.46 414.43 279.31 414.44 279.20C414.44 279.09 414.45 279.03 414.45 279.02C414.46 278.93 414.49 278.84 414.53 278.76C414.57 278.67 414.62 278.60 414.68 278.54L415.90 277.32C415.98 277.24 416.08 277.20 416.19 277.20C416.27 277.20 416.34 277.22 416.40 277.26C416.46 277.31 416.51 277.37 416.56 277.43L417.53 279.29C417.59 279.39 417.60 279.49 417.58 279.61C417.55 279.73 417.50 279.83 417.42 279.90L416.98 280.35C416.96 280.36 416.95 280.39 416.94 280.41C416.93 280.44 416.93 280.46 416.93 280.48C416.95 280.61 417.01 280.76 417.10 280.92C417.17 281.07 417.28 281.24 417.43 281.46C417.58 281.67 417.80 281.910 418.08 282.18C418.36 282.46 418.60 282.68 418.81 282.84C419.02 282.99 419.20 283.11 419.35 283.18C419.49 283.25 419.60 283.30 419.67 283.31L419.79 283.34C419.80 283.34 419.82 283.33 419.85 283.32C419.88 283.31 419.89 283.30 419.91 283.29L420.43 282.76C420.54 282.66 420.66 282.61 420.81 282.61C420.91 282.61 421.00 282.63 421.06 282.67L421.07 282.67L422.83 283.71C422.96 283.79 423.03 283.89 423.06 284.01"/><path d="M423.56 310.26C423.56 310.48 423.50 310.68 423.40 310.85L420.30 307.35L423.37 304.64C423.49 304.83 423.56 305.06 423.56 305.30L423.56 310.26M418.64 307.99L422.92 304.22C422.74 304.12 422.55 304.06 422.33 304.06L414.95 304.06C414.74 304.06 414.54 304.12 414.36 304.22L418.64 307.99M419.83 307.76L418.84 308.63C418.79 308.68 418.71 308.71 418.64 308.71C418.57 308.71 418.50 308.68 418.44 308.63L417.45 307.76L414.30 311.31C414.49 311.43 414.71 311.50 414.95 311.50L422.33 311.50C422.57 311.50 422.79 311.43 422.98 311.31L419.83 307.76M413.91 304.64C413.79 304.83 413.72 305.06 413.72 305.30L413.72 310.26C413.72 310.48 413.78 310.68 413.88 310.85L416.99 307.35L413.91 304.64"/><path d="M418.87 329.50C416.03 329.50 413.71 331.82 413.71 334.65C413.71 337.49 416.03 339.81 418.87 339.81C421.70 339.81 424.02 337.49 424.02 334.65C424.02 331.82 421.70 329.50 418.87 329.50M422.42 332.59L420.93 332.59C420.77 331.92 420.52 331.35 420.21 330.730C421.14 331.10 421.96 331.71 422.42 332.59M418.87 330.53C419.28 331.15 419.64 331.82 419.85 332.59L417.89 332.59C418.09 331.87 418.45 331.15 418.87 330.53M414.89 335.69C414.79 335.38 414.74 335.01 414.74 334.65C414.74 334.29 414.79 333.93 414.89 333.62L416.65 333.62C416.60 333.98 416.60 334.29 416.60 334.65C416.60 335.01 416.65 335.32 416.65 335.69L414.89 335.69M415.31 336.72L416.80 336.72C416.96 337.39 417.22 337.96 417.53 338.57C416.60 338.21 415.77 337.59 415.31 336.72M416.80 332.59L415.31 332.59C415.82 331.71 416.60 331.10 417.53 330.73C417.22 331.35 416.96 331.92 416.80 332.59M418.87 338.78C418.45 338.16 418.09 337.49 417.89 336.72L419.85 336.72C419.64 337.44 419.28 338.16 418.87 338.78M420.05 335.69L417.68 335.69C417.63 335.32 417.58 335.01 417.58 334.65C417.58 334.29 417.63 333.98 417.68 333.62L420.11 333.62C420.16 333.98 420.21 334.29 420.21 334.65C420.21 335.01 420.11 335.32 420.05 335.69M420.21 338.57C420.52 338.01 420.77 337.39 420.93 336.72L422.42 336.72C421.96 337.59 421.14 338.21 420.21 338.57M421.14 335.69C421.19 335.32 421.19 335.01 421.19 334.65C421.19 334.29 421.14 333.98 421.14 333.62L422.89 333.62C422.99 333.93 423.05 334.29 423.05 334.65C423.05 335.01 422.99 335.38 422.89 335.69L421.14 335.69"/><path d="M418.75 355.42C416.63 355.42 414.91 357.17 414.91 359.31C414.91 360.17 415.45 361.58 416.58 363.61C417.37 365.05 418.15 366.25 418.18 366.30L418.75 367.18L419.32 366.30C419.36 366.25 420.14 365.05 420.93 363.61C422.05 361.58 422.59 360.17 422.59 359.31C422.59 357.17 420.87 355.42 418.75 355.42M418.75 361.30C417.65 361.30 416.76 360.40 416.76 359.28C416.76 358.17 417.65 357.27 418.75 357.27C419.85 357.27 420.74 358.17 420.74 359.28C420.74 360.40 419.85 361.30 418.75 361.30"/></svg>
+<div class="body" style="left:435.60pt;top:266.93pt"><a href="tel:+919016743347">+91 90167 43347</a></div>
+<div class="body" style="left:435.60pt;top:292.82pt"><a href="mailto:hetjani818@gmail.com">hetjani818@gmail.com</a></div>
+<div class="body" style="left:435.60pt;top:319.46pt"><a href="https://www.linkedin.com/in/het-jani-888992262" target="_blank" rel="noopener">linkedin.com/in/het-jani-888992262</a></div>
+<div class="body" style="left:435.60pt;top:346.58pt">Ahmedabad, Gujarat, India</div>
+
+<!-- Technical skills -->
+<h2 class="h" style="left:412.84pt;top:414.52pt">TECHNICAL SKILLS</h2>
+<h3 class="body" style="left:412.84pt;top:447.18pt">GAME DEVELOPMENT</h3>
+<ul class="skills">
+<li class="skill" style="left:412.84pt;top:462.29pt">Unity 2D &amp; 3D · C# &amp; OOP</li>
+<li class="skill" style="left:412.84pt;top:477.79pt">Gameplay Programming</li>
+<li class="skill" style="left:412.84pt;top:493.29pt">Physics &amp; Colliders</li>
+<li class="skill" style="left:412.84pt;top:508.79pt">Input System · Cinemachine</li>
+<li class="skill" style="left:412.84pt;top:524.29pt">Animation · Prefabs · UI</li>
+<li class="skill" style="left:412.84pt;top:539.79pt">Level Design · Prototyping</li>
+<li class="skill" style="left:412.84pt;top:555.29pt">Debugging · Data Structures</li>
+</ul>
+<h3 class="body" style="left:412.84pt;top:580.19pt">WEB DEVELOPMENT</h3>
+<ul class="skills">
+<li class="skill" style="left:412.84pt;top:595.29pt">HTML · CSS · JavaScript</li>
+<li class="skill" style="left:412.84pt;top:610.79pt">React · Node.js · PHP</li>
+</ul>
+<h3 class="body" style="left:412.84pt;top:635.69pt">TOOLS</h3>
+<ul class="skills">
+<li class="skill" style="left:412.84pt;top:650.79pt">Git &amp; GitHub</li>
+<li class="skill" style="left:412.84pt;top:666.29pt">Visual Studio · VS Code</li>
+</ul>
+
+<!-- Education -->
+<h2 class="h" style="left:412.84pt;top:734.02pt">EDUCATION</h2>
+<article>
+<h3 class="sub" style="left:412.84pt;top:766.00pt">BACHELOR'S DEGREE IN<br>INFORMATION TECHNOLOGY</h3>
+<p class="body" style="left:412.84pt;top:792.69pt">Institute of Advanced Research<br>Gujarat, India</p>
+</article>
+</div>
+</section>
+</main>
+
+<script>
+(function () {
+  var FILE_NAME = "Het_Jani_Resume";
+
+  // Vector PDF via the browser's print dialog ("Save as PDF").
+  // Keeps text selectable and links clickable.
+  function exportPdf() {
+    var prev = document.title;
+    document.title = FILE_NAME;
+    document.fonts.ready.then(function () {
+      window.print();
+      document.title = prev;
+    });
+  }
+
+  function loadScript(src) {
+    return new Promise(function (resolve, reject) {
+      var s = document.createElement("script");
+      s.src = src; s.onload = resolve; s.onerror = reject;
+      document.head.appendChild(s);
+    });
+  }
+
+  // One-click download: renders each A4 page to a high-res image and builds the PDF.
+  async function downloadPdf(btn) {
+    btn.disabled = true;
+    var label = btn.textContent;
+    btn.textContent = "Generating...";
+    try {
+      if (!window.html2canvas) await loadScript("https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js");
+      if (!window.jspdf) await loadScript("https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js");
+      await document.fonts.ready;
+
+      var pdf = new window.jspdf.jsPDF({ unit: "mm", format: "a4", orientation: "portrait", compress: true });
+      var pages = document.querySelectorAll(".page");
+      for (var i = 0; i < pages.length; i++) {
+        var shadow = pages[i].style.boxShadow;
+        pages[i].style.boxShadow = "none";
+        var canvas = await window.html2canvas(pages[i], { scale: 4, backgroundColor: "#ffffff", useCORS: true });
+        pages[i].style.boxShadow = shadow;
+        if (i > 0) pdf.addPage();
+        pdf.addImage(canvas.toDataURL("image/jpeg", 0.95), "JPEG", 0, 0, 210, 297);
+      }
+      pdf.save(FILE_NAME + ".pdf");
+    } catch (e) {
+      alert("Could not generate the PDF (needs an internet connection to load the PDF library). Use \"Export as PDF\" instead.");
+      console.error(e);
+    } finally {
+      btn.disabled = false;
+      btn.textContent = label;
+    }
+  }
+
+  document.getElementById("btn-print").addEventListener("click", exportPdf);
+  document.getElementById("btn-download").addEventListener("click", function () { downloadPdf(this); });
+})();
+</script>
+</body>
+</html>
